@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d223e0aeb018124ea0240cc31430fa5, type: 3}
+  m_Name: boat
+  m_EditorClassIdentifier: 
+  itemName: boat
+  itemDescription: 
+  sprite: {fileID: 960783223240869194, guid: b86a408b9076f914696a900785a4ac45, type: 3}
+  uiSprite: {fileID: 0}
+  isCollectible: 1
+  recipe:
+  - {fileID: 11400000, guid: 11e1b970a8be82e4c9dffcff5b45ba97, type: 2}
+  - {fileID: 11400000, guid: 11e1b970a8be82e4c9dffcff5b45ba97, type: 2}

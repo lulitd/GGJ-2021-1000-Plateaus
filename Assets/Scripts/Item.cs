@@ -9,5 +9,8 @@ public class Item : ScriptableObject
      public string itemName;
      public string itemDescription;
      public Sprite sprite;
-     public bool allowMultiple;
+     public Sprite uiSprite;
+     public bool isCollectible;
+     public Item[] recipe; 
+
 }

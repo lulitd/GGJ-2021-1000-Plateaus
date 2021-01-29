@@ -5,23 +5,24 @@ using UnityEngine;
 public class PlayerInventory : Singleton<PlayerInventory>
 {
     protected PlayerInventory()
-    {
-    }
+    { }
 
     public List<Item> inventory;
     
-    private void Start()
-    {
-        
-    }
-
+    public InventoryUI _ui;
 
     public void AddItem(Item item)
     {
         if (item != null)
         {
-            if (inventory.Contains(item)) return;
+           
             inventory.Add(item);
+
+            if (_ui != null)
+            {
+            
+                _ui.AddInventory(item);
+            }
         }
     }
 
@@ -30,9 +31,11 @@ public class PlayerInventory : Singleton<PlayerInventory>
         if (item != null)
         {
             inventory.Remove(item);
+            _ui.RemoveInventory(item);
         }
     }
 
+    
     public bool CheckInventory(Item item)
     {
         return inventory.Contains(item);

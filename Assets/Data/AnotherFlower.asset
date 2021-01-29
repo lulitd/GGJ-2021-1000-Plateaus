@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d223e0aeb018124ea0240cc31430fa5, type: 3}
-  m_Name: Cirle
+  m_Name: AnotherFlower
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
-  sprite: {fileID: 0}
+  itemName: AnotherFlower
+  itemDescription: Just a tree. Nothing special.
+  sprite: {fileID: -939914929146671659, guid: b86a408b9076f914696a900785a4ac45, type: 3}
+  uiSprite: {fileID: 0}
+  isCollectible: 0
+  recipe: []

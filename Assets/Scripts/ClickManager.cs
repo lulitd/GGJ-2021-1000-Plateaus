@@ -15,19 +15,18 @@ public class ClickManager : MonoBehaviour
     void Update () {
         
         if (Input.GetMouseButtonDown(0)) {
-            var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-          
             
+            var mousePos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var hit = Physics2D.Raycast(mousePos, Vector2.zero);
+            
             if (hit.collider !=null)
             {
-                Debug.Log("hello?");
 
                 var _gameObject = hit.collider.gameObject;
 
-                var _collectable = _gameObject.GetComponent<Collectable>() ;
+                var collectible = _gameObject.GetComponent<Collectable>() ;
                 
-                if (_collectable) _collectable.OnSelect();
+                if (collectible) collectible.OnSelect();
 
             }
         }
