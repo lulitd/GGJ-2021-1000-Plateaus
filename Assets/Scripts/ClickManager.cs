@@ -23,10 +23,26 @@ public class ClickManager : MonoBehaviour
             {
 
                 var _gameObject = hit.collider.gameObject;
-
                 var collectible = _gameObject.GetComponent<Collectable>() ;
+                if (collectible)
+                {
+                    collectible.OnSelect();
+                }
+                else
+                {
+                    Debug.Log(_gameObject.name);
+
+                    var click = _gameObject.GetComponent<IClickable>();
+                    if(click !=null) click.onClick();
+                    else
+                    {
+                        var puzzle = _gameObject.GetComponentInParent<Puzzle>();
+                        if(puzzle)  puzzle.OnInspect();
+                    }
+                }
                 
-                if (collectible) collectible.OnSelect();
+                
+               
 
             }
         }

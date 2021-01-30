@@ -17,21 +17,21 @@ MonoBehaviour:
   - message: 'The Ringmaster tells Gertie that she belongs to the circus forever
       and locks her up '
     initalDelay: 0.2
-    timeBetweenCharacters: 0.05
+    timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
     portrait: {fileID: 0}
     portraitLeft: 0
   - message: He locks the clipping in a safe
     initalDelay: 0.2
-    timeBetweenCharacters: 0.05
+    timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
     portrait: {fileID: 0}
     portraitLeft: 0
   - message: "He says he\u2019ll let her out after the last performance"
     initalDelay: 0.2
-    timeBetweenCharacters: 0.05
+    timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
     portrait: {fileID: 0}

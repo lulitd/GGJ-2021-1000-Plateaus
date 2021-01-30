@@ -66,11 +66,9 @@ public partial class DialogSystem : Singleton<DialogSystem>
         {
             _dialogQue.Clear();
         }
+        
+        StopAllCoroutines();
 
-        if (PlayingText != null)
-        {
-            StopCoroutine(PlayingText);
-        }
         PlayingText= StartCoroutine(typeText(setting));
     }
     void addToQue(Dialog settings)
@@ -104,12 +102,12 @@ public partial class DialogSystem : Singleton<DialogSystem>
         }
         else
         {
-
-            yield return StartCoroutine(ClearText(settings.disappearAfterTime));
+            yield return new WaitForSeconds(settings.disappearAfterTime);
+            textDisplay.text = "";
+            isCurrentlyPlaying = false; 
+            if (_button) _button.interactable = false;
         }
-
-     
-
+        
         if (_dialogQue.Count > 0)
         {
            currentDialog =  _dialogQue.Dequeue();
@@ -144,7 +142,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
 
             if (currentDialog.disappearAfterTime > 0)
             {
-                PlayingText = StartCoroutine(ClearText(currentDialog.disappearAfterTime));
+                StartCoroutine(ClearText(currentDialog.disappearAfterTime));
             }
             
         }

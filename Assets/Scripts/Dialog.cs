@@ -13,7 +13,7 @@ public struct Dialog
      public Sprite portrait;
      public bool portraitLeft;
 
-    public Dialog(string message, float initalDelay = 0.1f, float timeBetweenCharacters = 0.05f,
+    public Dialog(string message, float initalDelay = 0.1f, float timeBetweenCharacters = 0.03f,
         bool canFastforward = true, float disappearAfterTime = 2, Sprite portrait=null, bool portraitLeft = false)
     {
         this.initalDelay = initalDelay;

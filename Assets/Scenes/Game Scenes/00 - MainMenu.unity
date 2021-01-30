@@ -2594,8 +2594,8 @@ Canvas:
   m_GameObject: {fileID: 1098899576}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1295856815}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2603,7 +2603,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1380025369
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1098899580
@@ -2642,7 +2642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mixer: {fileID: 24100000, guid: 8d2d0ad4c468a5b42be667dddf72620c, type: 2}
-  scenename: 02 - Trailer
+  scenename: 01 - Intro Cutscene
 --- !u!95 &1098899582
 Animator:
   serializedVersion: 3
@@ -2737,6 +2737,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149567855}
   m_CullTransparentMesh: 1
+--- !u!20 &1295856815 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4693878316099552802, guid: 11e836ec3a2932947a29aab4f338a3ae, type: 3}
+  m_PrefabInstance: {fileID: 548217210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1424111460
 GameObject:
   m_ObjectHideFlags: 0

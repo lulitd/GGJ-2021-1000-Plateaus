@@ -499,8 +499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "     yield return new WaitForSeconds(settings.disappearAfterTime);\r\n           
-    textDisplay.text = \"\";\r\n            isCurrentlyPlaying = false; "
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72f13af1ba20e9a46afc48e273e3cf40, type: 2}
   m_sharedMaterial: {fileID: -5319342062193492565, guid: 72f13af1ba20e9a46afc48e273e3cf40, type: 2}
