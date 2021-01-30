@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/00 - MainMenu.unity
     guid: 5d7de6f63943da041b49dc5693a9cc40
   - enabled: 1
+    path: Assets/Scenes/Game Scenes/01 - Intro Cutscene.unity
+    guid: 672c854671de89d4c963bfb685e42482
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/02 - Cage.unity
+    guid: 33afed02c263e574081f26081322aba8
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/03 - Trailer.unity
+    guid: 566ef682bd9c7264d9bfe1dcc11a38ca
+  - enabled: 0
     path: Assets/Scenes/Tester.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

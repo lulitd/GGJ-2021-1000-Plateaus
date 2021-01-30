@@ -32,15 +32,15 @@ public class Collectable : MonoBehaviour, IInteractable
     public void OnSelect()
     {
         DialogSystem.Instance.PlayDialogImmediately.Invoke(
-            new DialogSystem.Dialog(itemData.itemDescription),true);
+            new Dialog(itemData.itemDescription),true);
         if (!_isCollectible || !PlayerInventory.Instance) return;
         
         PlayerInventory.Instance.AddItem(itemData);
         Destroy(gameObject);
     }
 
-    [ContextMenu("Set Image from Item data")]
-    public void SetImageFromItemData()
+    [ContextMenu("Set from Item data")]
+    public void SetFromItemData()
     {
         if (itemData == null) return;
         
@@ -54,10 +54,17 @@ public class Collectable : MonoBehaviour, IInteractable
         if (itemData.sprite != null)
         {
             _renderer.sprite = itemData.sprite;
-            DestroyImmediate(_collider2D);
 
+            _collider2D = GetComponent<Collider2D>();
+            if (_collider2D != null)
+            {
+                DestroyImmediate(_collider2D);
+                
+            }
             _collider2D = gameObject.AddComponent<BoxCollider2D>();
         }
+
+        gameObject.name = itemData.name; 
     }
 
 

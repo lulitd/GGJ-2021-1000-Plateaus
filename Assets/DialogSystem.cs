@@ -4,31 +4,60 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class DialogSystem : Singleton<DialogSystem>
+public partial class DialogSystem : Singleton<DialogSystem>
 {
 
     [SerializeField] private TextMeshProUGUI textDisplay;
-
+ 
     public UnityEvent<Dialog> PleasePlayDialog;
     public UnityEvent<Dialog,bool> PlayDialogImmediately;
+    public UnityEvent OnFinishedQueue; 
     private Queue<Dialog> _dialogQue;
 
     private Coroutine PlayingText;
     private bool isCurrentlyPlaying = false;
 
-    private Dialog currentDialog; 
+    private Dialog currentDialog;
+    private Button _button; 
     private void OnEnable()
     {
-        PleasePlayDialog.AddListener(addToQue);
-        PlayDialogImmediately.AddListener(PlayImmediately);
+        PleasePlayDialog?.AddListener(addToQue);
+        PlayDialogImmediately?.AddListener(PlayImmediately);
         _dialogQue = new Queue<Dialog>();
-        textDisplay.text = "";
+        SceneManager.sceneLoaded += OnSceneLoaded;
+       findDialog();
     }
+    
     private void OnDisable()
-    {
+    {  Debug.Log("OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         PleasePlayDialog.RemoveListener(addToQue);
+        _button?.onClick.RemoveListener(Next);
     }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+       findDialog();
+    }
+
+    void findDialog()
+    {
+        var display = GameObject.FindWithTag("Dialog");
+             textDisplay=display?.GetComponentInChildren<TextMeshProUGUI>();
+             _button = display.GetComponentInChildren<Button>();
+             _button?.onClick.AddListener(Next);
+
+        if (textDisplay)
+        {
+            textDisplay.text = "";
+        }
+        
+
+    }
+    
 
     void PlayImmediately(Dialog setting, bool clearQue = false)
     {
@@ -62,7 +91,7 @@ public class DialogSystem : Singleton<DialogSystem>
         isCurrentlyPlaying = true; 
         textDisplay.text = "";
         yield return new WaitForSeconds(settings.initalDelay);
-        
+        if (_button) _button.interactable = true;
         foreach (var c in settings.message)
         {
             textDisplay.text += c;
@@ -75,9 +104,8 @@ public class DialogSystem : Singleton<DialogSystem>
         }
         else
         {
-            yield return new WaitForSeconds(settings.disappearAfterTime);
-            textDisplay.text = "";
-            isCurrentlyPlaying = false; 
+
+            yield return StartCoroutine(ClearText(settings.disappearAfterTime));
         }
 
      
@@ -87,8 +115,22 @@ public class DialogSystem : Singleton<DialogSystem>
            currentDialog =  _dialogQue.Dequeue();
            PlayingText= StartCoroutine(typeText(currentDialog));
         }
+        else
+        {
+            OnFinishedQueue.Invoke();
+        }
+
     }
 
+
+    IEnumerator ClearText(float time )
+    {
+        isCurrentlyPlaying = true; 
+        yield return new WaitForSeconds(time);
+        textDisplay.text = "";
+        isCurrentlyPlaying = false; 
+        if (_button) _button.interactable = false;
+    }
     [ContextMenu("Next")]
     public void Next()
     {
@@ -98,7 +140,12 @@ public class DialogSystem : Singleton<DialogSystem>
             if (PlayingText!=null) StopCoroutine(PlayingText);
             // fast forward message. 
             textDisplay.text = currentDialog.message;
-            isCurrentlyPlaying = false; 
+            isCurrentlyPlaying = false;
+
+            if (currentDialog.disappearAfterTime > 0)
+            {
+                PlayingText = StartCoroutine(ClearText(currentDialog.disappearAfterTime));
+            }
             
         }
         else if(_dialogQue.Count>0)
@@ -108,7 +155,9 @@ public class DialogSystem : Singleton<DialogSystem>
             PlayingText = StartCoroutine(typeText(currentDialog));
         } else if (_dialogQue.Count == 0)
         {
-            textDisplay.text = ""; 
+            textDisplay.text = "";
+            if (_button) _button.interactable = false; 
+            OnFinishedQueue.Invoke();
         }
     }
 
@@ -117,24 +166,4 @@ public class DialogSystem : Singleton<DialogSystem>
     {
         PlayDialogImmediately.Invoke(new Dialog("PLAY NOW"),true);
     }
-
-
-    public struct Dialog
-    {
-         public float initalDelay;
-         public string message;
-         public float timeBetweenCharacters;
-         public bool canFastforward;
-         public float disappearAfterTime;
-
-         public Dialog(string message, float initalDelay = 0.1f , float timeBetweenCharacters = 0.05f, bool canFastforward = true , float disappearAfterTime=2)
-         {
-             this.initalDelay = initalDelay;
-             this.message = message;
-             this.timeBetweenCharacters = timeBetweenCharacters;
-             this.canFastforward = canFastforward;
-             this.disappearAfterTime = disappearAfterTime; 
-         }
-    }
-
 }

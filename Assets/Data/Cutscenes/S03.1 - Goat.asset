@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66cb072cb3fdc4479bf71aeb97179e5, type: 3}
+  m_Name: S03.1 - Goat
+  m_EditorClassIdentifier: 
+  CharacterPortrait: {fileID: 0}
+  lines:
+  - message: 'Zenas pulls out a newspaper clipping as proof that her parents are
+      still alive '
+    initalDelay: 0.2
+    timeBetweenCharacters: 0.05
+    canFastforward: 1
+    disappearAfterTime: -1
+    portrait: {fileID: 0}
+    portraitLeft: 0
+  - message: 'He arranged for them to come to the last performance of the day '
+    initalDelay: 0.2
+    timeBetweenCharacters: 0.05
+    canFastforward: 1
+    disappearAfterTime: -1
+    portrait: {fileID: 0}
+    portraitLeft: 0
+  leftSide: 0
