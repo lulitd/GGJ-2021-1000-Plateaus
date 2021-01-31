@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 [RequireComponent(typeof(SpriteRenderer))]
 public class Collectable : MonoBehaviour, IInteractable
 {
@@ -11,6 +13,8 @@ public class Collectable : MonoBehaviour, IInteractable
 
     public Item itemData;
     private bool _isCollectible;
+
+    public UnityEvent OnClicked; 
     
     private void Start()
     {
@@ -33,6 +37,7 @@ public class Collectable : MonoBehaviour, IInteractable
     {
         DialogSystem.Instance.PlayDialogImmediately.Invoke(
             new Dialog(itemData.itemDescription),true);
+        OnClicked.Invoke();
         if (!_isCollectible || !PlayerInventory.Instance) return;
         
         PlayerInventory.Instance.AddItem(itemData);
@@ -73,8 +78,9 @@ public class Collectable : MonoBehaviour, IInteractable
         _isCollectible = val;
     }
 
-    public void onInteract(Item item, int amount=1)
+    public void onItemInteract(Item item, int amount=1)
     {
-        Debug.Log(item.name + amount);
+        Debug.Log("item?");
+        
     }
 }

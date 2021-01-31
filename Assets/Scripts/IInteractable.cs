@@ -1,4 +1,4 @@
 ﻿public interface IInteractable
 {
-    void onInteract(Item item, int amount=1);
+    void onItemInteract(Item item, int amount=1);
 }

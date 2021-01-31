@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class itemUIDisplay : MonoBehaviour
 {
     [SerializeField]private Image _image;
     [SerializeField]private TextMeshProUGUI _textMeshProUgui;
+    [SerializeField] public Transform parent; 
     private int _amount = 1;
     public int Amount => _amount;
     private Item item;
+    
     private void OnEnable()
     {
         // disable it
@@ -38,11 +41,7 @@ public class itemUIDisplay : MonoBehaviour
 
     public void Drop(Vector3 screenPosition)
     {
-        // TO MERGE:
         
-        
-        // TO DO RAYCAST: 
-
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var hit = Physics2D.Raycast(mousePos, Vector2.zero);
             
@@ -51,7 +50,7 @@ public class itemUIDisplay : MonoBehaviour
 
             var _collectible = hit.collider.gameObject.GetComponent<IInteractable>();
             
-            _collectible?.onInteract(item,_amount);
+            _collectible?.onItemInteract(item,_amount);
 
 
         }

@@ -26,12 +26,15 @@ public class PlayerInventory : Singleton<PlayerInventory>
         }
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItem(Item item,int amount=1)
     {
-        if (item != null)
+        for (int i = 0; i < amount; i++)
         {
-            inventory.Remove(item);
-            _ui.RemoveInventory(item);
+            if (item != null)
+            {
+                inventory.Remove(item);
+                _ui.RemoveInventory(item);
+            }
         }
     }
 

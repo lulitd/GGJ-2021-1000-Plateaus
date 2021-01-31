@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d223e0aeb018124ea0240cc31430fa5, type: 3}
+  m_Name: Newclipping
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemDescription: Hi Mom. Hi Dad. Can't wait to meet you
+  sprite: {fileID: 0}
+  uiSprite: {fileID: 21300000, guid: 5ec2ff1f3321dd24a811b674eaf002a6, type: 3}
+  isCollectible: 1
+  recipe: []

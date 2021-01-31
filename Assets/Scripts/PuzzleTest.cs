@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PuzzleTest : Puzzle
 {
-    public override void onInteract(Item item, int amount = 1)
+    public override void onItemInteract(Item item, int amount = 1)
     {
         DialogSystem.Instance.PleasePlayDialog.Invoke(
         new Dialog("This is a test message. Try again."));

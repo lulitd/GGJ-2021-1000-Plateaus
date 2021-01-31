@@ -32,7 +32,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
     }
     
     private void OnDisable()
-    {  Debug.Log("OnDisable");
+    {  
         SceneManager.sceneLoaded -= OnSceneLoaded;
         PleasePlayDialog.RemoveListener(addToQue);
         _button?.onClick.RemoveListener(Next);
@@ -61,6 +61,8 @@ public partial class DialogSystem : Singleton<DialogSystem>
 
     void PlayImmediately(Dialog setting, bool clearQue = false)
     {
+        if (String.IsNullOrEmpty(setting.message)) return; 
+        
         currentDialog = setting;
         if (clearQue)
         {
@@ -73,6 +75,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
     }
     void addToQue(Dialog settings)
     {
+        if (String.IsNullOrEmpty(settings.message)) return; 
         if (isCurrentlyPlaying)
         {
             _dialogQue.Enqueue(settings);

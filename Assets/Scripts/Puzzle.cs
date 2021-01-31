@@ -32,7 +32,7 @@ public abstract class Puzzle : MonoBehaviour, IInteractable, IClickable
 
    }
 
-   public virtual void onInteract(Item item, int amount = 1)
+   public virtual void onItemInteract(Item item, int amount = 1)
    {
       
    }
