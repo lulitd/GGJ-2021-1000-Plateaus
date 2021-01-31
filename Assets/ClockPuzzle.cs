@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClockPuzzle : Puzzle
 {
@@ -10,7 +11,11 @@ public class ClockPuzzle : Puzzle
     [SerializeField]private int quanity = 3;
     
     [SerializeField] private LockPuzzle.CardSuit suit;
-    private int value; 
+    private int value;
+
+    [SerializeField] private GameObject gearvisual; 
+
+    public UnityEvent click; 
 
     private void OnEnable()
     {
@@ -38,6 +43,8 @@ public class ClockPuzzle : Puzzle
                 new Dialog(isSolvedLine),true);
             PlayerInventory.Instance.RemoveItem(item,amount);
             isSolved = true; 
+            
+            gearvisual.SetActive(true);
         }
     }
 
@@ -45,6 +52,9 @@ public class ClockPuzzle : Puzzle
     {
         DialogSystem.Instance.PlayDialogImmediately.Invoke(
             new Dialog(isSolved ? isSolvedLine : unSolvedLine),true);
+        
+        click.Invoke();
+        
     }
 
     public override void OnInspect()

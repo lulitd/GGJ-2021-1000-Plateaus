@@ -89,6 +89,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
 
     IEnumerator typeText(Dialog settings)
     {
+        GameAudioManager.Instance.PlayDialog();
         isCurrentlyPlaying = true; 
         textDisplay.text = "";
         yield return new WaitForSeconds(settings.initalDelay);
@@ -98,7 +99,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
             textDisplay.text += c;
             yield return new WaitForSeconds(settings.timeBetweenCharacters);
         }
-
+        GameAudioManager.Instance.StopDialog();
         if (settings.disappearAfterTime < 0)
         {  isCurrentlyPlaying = false;
             yield break;

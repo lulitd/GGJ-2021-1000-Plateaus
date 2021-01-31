@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OpenWindowPuzzle : Puzzle
 {
@@ -10,8 +11,9 @@ public class OpenWindowPuzzle : Puzzle
 
     public string noClue; 
     public string onFirstRead;
-    public string noClip; 
-
+    public string noClip;
+    public UnityEvent onFinishLevel;
+    
     public override void onClick()
     {
         var hasChute = PlayerInventory.Instance.CheckInventory(parachute);
@@ -34,6 +36,7 @@ public class OpenWindowPuzzle : Puzzle
         {   DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(isSolvedLine),true);
             isSolved = true;
+            onFinishLevel.Invoke();
             return;
         }
     }
@@ -61,6 +64,7 @@ public class OpenWindowPuzzle : Puzzle
         {   DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(isSolvedLine),true);
             isSolved = true;
+            onFinishLevel.Invoke();
             return;
         }
     }
@@ -94,11 +98,10 @@ public class OpenWindowPuzzle : Puzzle
         {   DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(isSolvedLine),true);
             isSolved = true;
+            onFinishLevel.Invoke();
             return;
         }
         
-        
-
     }
     
     

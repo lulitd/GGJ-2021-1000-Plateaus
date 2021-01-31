@@ -28,10 +28,6 @@ public class LockDiamondClue : MonoBehaviour
                 totalOn++;
             }
         }
-
-
-
-
     }
     
     

@@ -14,6 +14,11 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         MenuAnimator = GetComponent<Animator>();
+       var vol =  PlayerPrefs.GetFloat("VOL", 0.75f);
+       var sfx = PlayerPrefs.GetFloat("SFX", 0.75f);
+       
+       AdjustVolume(vol);
+       AdjustSFX(sfx);
     }
 
     public void BeginGame()
@@ -72,10 +77,22 @@ public class MainMenuManager : MonoBehaviour
     public void AdjustVolume(float vol)
     {
         Mixer.SetFloat("Music", Mathf.Log10(vol) * 20);
+        PlayerPrefs.SetFloat("VOL",vol);
     }
 
     public void AdjustSFX(float vol)
     {
         Mixer.SetFloat("SFX", Mathf.Log10(vol) * 20);
+        PlayerPrefs.SetFloat("SFX",vol);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.Save();
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.Save();
     }
 }
