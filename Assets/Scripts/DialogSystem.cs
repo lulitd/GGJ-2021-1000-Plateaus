@@ -40,6 +40,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
     
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        CleanUp();
        findDialog();
     }
 
@@ -47,7 +48,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
     {
         var display = GameObject.FindWithTag("Dialog");
              textDisplay=display?.GetComponentInChildren<TextMeshProUGUI>();
-             _button = display.GetComponentInChildren<Button>();
+             _button = display?.GetComponentInChildren<Button>();
              _button?.onClick.AddListener(Next);
 
         if (textDisplay)
@@ -57,7 +58,20 @@ public partial class DialogSystem : Singleton<DialogSystem>
         
 
     }
-    
+
+
+    void CleanUp()
+    {
+        _dialogQue.Clear();
+        StopAllCoroutines();
+        
+        if (textDisplay)
+        {
+            textDisplay.text = "";
+        }
+
+        isCurrentlyPlaying = false; 
+    }
 
     void PlayImmediately(Dialog setting, bool clearQue = false)
     {

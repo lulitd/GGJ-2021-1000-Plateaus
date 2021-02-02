@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-public class GameAudioManager :  Singleton<GameAudioManager>
+public class GameAudioManager : MonoBehaviour
 {
-    protected GameAudioManager(){}
+    public  static GameAudioManager Instance = null; 
 
     public AudioSource loopSource;
     public AudioSource SfxSource;
@@ -13,10 +13,27 @@ public class GameAudioManager :  Singleton<GameAudioManager>
     [SerializeField] AudioMixer _audioMixer;
 
     public AudioClip MainMenu;
-    public AudioClip MainSong; 
-    
-   
-   
+    public AudioClip MainSong;
+
+
+
+    void SetupSingleton()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+        } else
+        {
+            Instance = this; 
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Awake()
+    {
+        SetupSingleton();
+        Init();
+    }
 
     private void Init()
     {
@@ -38,7 +55,6 @@ public class GameAudioManager :  Singleton<GameAudioManager>
 
     private void OnEnable()
     {
-        Init();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -58,7 +74,7 @@ public class GameAudioManager :  Singleton<GameAudioManager>
         }
         else
         {
-            if (GameAudioManager.Instance.loopSource.clip != MainSong)
+              if (GameAudioManager.Instance.loopSource.clip != MainSong)
             {
                 GameAudioManager.Instance.loopSource.clip = MainSong;
                 GameAudioManager.Instance.loopSource.Play();

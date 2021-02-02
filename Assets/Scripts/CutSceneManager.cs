@@ -99,7 +99,6 @@ public class CutSceneManager : MonoBehaviour
             foreach (var line in dialog.lines)
             {
                 DialogSystem.Instance.PleasePlayDialog.Invoke(line);
-                Debug.Log("lines");
             }
         }
     }
@@ -119,10 +118,9 @@ public class CutSceneManager : MonoBehaviour
 
         while (current != null) 
         {
-            Debug.Log("waiting for it to finish");
+
             yield return null;
         }
-        Debug.Log(" finish");
         asyncLoad.allowSceneActivation = true;
             
     }
