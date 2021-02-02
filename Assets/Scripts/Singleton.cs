@@ -7,20 +7,22 @@ using Object = UnityEngine.Object;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static bool _closing = false; 
-    private static object _locked = new Object();
+    private static bool m_ShuttingDown = false;
+    private static object m_Lock = new object();
     private static T _instance;
     
     public static T Instance
     {
         get
         {
-            if (_closing)
+            if (m_ShuttingDown)
             {
+                Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+                                 "' already destroyed. Returning null.");
                 return null;
             }
 
-            lock (_locked)
+            lock (m_Lock)
             {
 
                 if (_instance == null)
@@ -31,23 +33,25 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     {
                         var singleton = new GameObject();
                         _instance = singleton.AddComponent<T>();
-                        singleton.name = typeof(T).ToString()+" (Singleton)";
+                        singleton.name = typeof(T).ToString() + " (Singleton)";
+                        DontDestroyOnLoad(singleton);
                     }
-                    DontDestroyOnLoad(_instance);
                 }
+
+                return _instance;
             }
-            return _instance;
         }
     }
-
+ 
+    
     private void OnApplicationQuit()
     {
-        _closing = true;
+        m_ShuttingDown = true;
     }
 
     private void OnDestroy()
     {
-        _closing = true;
+        m_ShuttingDown = true;
     }
 }
    

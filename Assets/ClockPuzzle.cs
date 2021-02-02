@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,7 +15,7 @@ public class ClockPuzzle : Puzzle
     private int value;
 
     [SerializeField] private GameObject gearvisual; 
-
+    [SerializeField] private GameObject[] hourHandVisuals;
     public UnityEvent click; 
 
     private void OnEnable()
@@ -42,11 +43,27 @@ public class ClockPuzzle : Puzzle
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(isSolvedLine),true);
             PlayerInventory.Instance.RemoveItem(item,amount);
-            isSolved = true; 
-            
-            gearvisual.SetActive(true);
+            if (!isSolved)
+            {
+                isSolved = true;
+
+                gearvisual.SetActive(true);
+
+                if (hourHandVisuals.Length > 0)
+                {
+
+                    foreach (var hand in hourHandVisuals)
+                    {
+                       
+                        hand.transform.rotation = Quaternion.Euler(0,0,-30f *value);
+                    }
+                }
+            }
         }
     }
+
+
+
 
     public override void onClick()
     {

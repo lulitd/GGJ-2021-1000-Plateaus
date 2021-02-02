@@ -24,8 +24,13 @@ public class CutSceneManager : MonoBehaviour
     {
         // create cute of cutscenes.. using list for inspector...
         _cutsceneQue = new Queue<Cutscene>(Cutscenes);
-        imageGroup = background.gameObject.GetComponent<CanvasGroup>();
-        DialogSystem.Instance.OnFinishedQueue.AddListener(StartCutscene);
+        imageGroup = background?.gameObject.GetComponent<CanvasGroup>();
+;
+        if (DialogSystem.Instance != null)
+        {
+            DialogSystem.Instance.OnFinishedQueue.AddListener(StartCutscene);
+        }
+
         StartCutscene();
     }
 
@@ -41,17 +46,14 @@ public class CutSceneManager : MonoBehaviour
 
     public void StartCutscene()
     {
-        OnStart.Invoke();
-
+         OnStart.Invoke();
         if (_cutsceneQue.Count == 0)
         {
             current = null;
+            OnFinishCutscenes.Invoke();
             return;
         }
         current = _cutsceneQue.Dequeue();
-        
-        if (current ==null) return;
-
         StartCoroutine(ChangeBackground(current));
     }
     

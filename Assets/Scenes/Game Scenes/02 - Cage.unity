@@ -232,8 +232,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5832750534261052683, guid: 8d2d0ad4c468a5b42be667dddf72620c, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.727
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2248,7 +2248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9084642153827288427, guid: 3adc18d9d31506347a81f5412d041191, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 3435973836
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 9084642154676558873, guid: 3adc18d9d31506347a81f5412d041191, type: 3}
       propertyPath: m_Camera

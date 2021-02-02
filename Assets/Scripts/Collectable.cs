@@ -35,11 +35,14 @@ public class Collectable : MonoBehaviour, IInteractable
 
     public void OnSelect()
     {
-        DialogSystem.Instance.PlayDialogImmediately.Invoke(
-            new Dialog(itemData.itemDescription),true);
+        if (DialogSystem.Instance)
+        {
+            DialogSystem.Instance.PlayDialogImmediately.Invoke(
+                new Dialog(itemData.itemDescription), true);
+        }
+
         OnClicked.Invoke();
         if (!_isCollectible || !PlayerInventory.Instance) return;
-        
         PlayerInventory.Instance.AddItem(itemData);
         Destroy(gameObject);
     }

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public partial class DialogSystem : Singleton<DialogSystem>
+public  class DialogSystem : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI textDisplay;
@@ -21,7 +21,36 @@ public partial class DialogSystem : Singleton<DialogSystem>
     private bool isCurrentlyPlaying = false;
 
     private Dialog currentDialog;
-    private Button _button; 
+    private Button _button;
+
+    public static DialogSystem Instance = null;
+    
+    void SetupSingleton()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+        } else
+        {
+            Instance = this; 
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+    public  void Awake()
+    {
+
+       SetupSingleton();
+        
+        
+        if (PleasePlayDialog==null)
+        PleasePlayDialog = new UnityEvent<Dialog>();
+        if (PlayDialogImmediately==null)
+        PlayDialogImmediately = new UnityEvent<Dialog, bool>();
+        if (OnFinishedQueue==null)
+        OnFinishedQueue = new UnityEvent();
+        
+    }
+
     private void OnEnable()
     {
         PleasePlayDialog?.AddListener(addToQue);
@@ -34,29 +63,35 @@ public partial class DialogSystem : Singleton<DialogSystem>
     private void OnDisable()
     {  
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        PleasePlayDialog.RemoveListener(addToQue);
+        PleasePlayDialog?.RemoveListener(addToQue);
         _button?.onClick.RemoveListener(Next);
     }
     
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("scene load?");
         CleanUp();
        findDialog();
     }
 
     void findDialog()
     {
+
         var display = GameObject.FindWithTag("Dialog");
+        
+        
+            Debug.Log("display?" +display);
              textDisplay=display?.GetComponentInChildren<TextMeshProUGUI>();
-             _button = display?.GetComponentInChildren<Button>();
+             
+             Debug.Log("text?"+textDisplay);
+             _button = display?.GetComponent<Button>();
+             Debug.Log("hi"+_button+"?");
              _button?.onClick.AddListener(Next);
 
-        if (textDisplay)
+        if (textDisplay) 
         {
             textDisplay.text = "";
         }
-        
-
     }
 
 
@@ -103,7 +138,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
 
     IEnumerator typeText(Dialog settings)
     {
-        GameAudioManager.Instance.PlayDialog();
+        GameAudioManager.Instance?.PlayDialog();
         isCurrentlyPlaying = true; 
         textDisplay.text = "";
         yield return new WaitForSeconds(settings.initalDelay);
@@ -113,7 +148,7 @@ public partial class DialogSystem : Singleton<DialogSystem>
             textDisplay.text += c;
             yield return new WaitForSeconds(settings.timeBetweenCharacters);
         }
-        GameAudioManager.Instance.StopDialog();
+        GameAudioManager.Instance?.StopDialog();
         if (settings.disappearAfterTime < 0)
         {  isCurrentlyPlaying = false;
             yield break;

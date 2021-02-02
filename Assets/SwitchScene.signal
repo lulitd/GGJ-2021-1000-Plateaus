@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef63c865dcdf144ea154f44ccfa015b, type: 3}
-  m_Name: S07
+  m_Script: {fileID: 11500000, guid: d6fa2d92fc1b3f34da284357edf89c3b, type: 3}
+  m_Name: SwitchScene
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: bfac9ea3ce4d1674fbe6e2d674df149b, type: 3}
-  _dialogs:
-  - {fileID: 11400000, guid: 4b2067dcfbc37bd4ba3499be51c58ac0, type: 2}
-  LoadSceneInBackground: 

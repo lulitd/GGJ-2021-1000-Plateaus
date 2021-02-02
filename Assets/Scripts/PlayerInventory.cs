@@ -2,14 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : Singleton<PlayerInventory>
+public class PlayerInventory : MonoBehaviour
 {
-    protected PlayerInventory()
-    { }
-
+    
     public List<Item> inventory;
     
     public InventoryUI _ui;
+
+    public static PlayerInventory Instance; 
+    
+    void SetupSingleton()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+        } else
+        {
+            Instance = this; 
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    public void Awake()
+    {
+
+        SetupSingleton();
+    }
 
     public void AddItem(Item item)
     {
