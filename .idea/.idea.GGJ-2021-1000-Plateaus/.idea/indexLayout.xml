@@ -28,7 +28,7 @@
       <Path>Builds</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
-      <Path>Temp</Path>
+      <Path>Maker</Path>
       <Path>UserSettings</Path>
       <Path>obj</Path>
     </explicitExcludes>
