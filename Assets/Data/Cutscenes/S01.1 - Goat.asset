@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66cb072cb3fdc4479bf71aeb97179e5, type: 3}
   m_Name: S01.1 - Goat
   m_EditorClassIdentifier: 
-  CharacterPortrait: {fileID: 0}
   lines:
   - message: Zenas, father figure at the circus to Gertie, lies on his deathbed
     initalDelay: 1
     timeBetweenCharacters: 0.05
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
-  leftSide: 1
+    speaker: {fileID: 11400000, guid: cff1963a8691c344aabe62f17ddd9db4, type: 2}

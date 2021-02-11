@@ -66,12 +66,11 @@ public  class DialogSystem : MonoBehaviour
         PleasePlayDialog?.RemoveListener(addToQue);
         _button?.onClick.RemoveListener(Next);
     }
-    
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("scene load?");
         CleanUp();
-       findDialog();
+        findDialog();
     }
 
     void findDialog()
@@ -79,13 +78,8 @@ public  class DialogSystem : MonoBehaviour
 
         var display = GameObject.FindWithTag("Dialog");
         
-        
-            Debug.Log("display?" +display);
-             textDisplay=display?.GetComponentInChildren<TextMeshProUGUI>();
-             
-             Debug.Log("text?"+textDisplay);
-             _button = display?.GetComponent<Button>();
-             Debug.Log("hi"+_button+"?");
+            textDisplay=display?.GetComponentInChildren<TextMeshProUGUI>();
+             _button = display?.GetComponentInChildren<Button>();
              _button?.onClick.AddListener(Next);
 
         if (textDisplay) 
@@ -95,7 +89,7 @@ public  class DialogSystem : MonoBehaviour
     }
 
 
-    void CleanUp()
+    private void CleanUp()
     {
         _dialogQue.Clear();
         StopAllCoroutines();
@@ -138,7 +132,7 @@ public  class DialogSystem : MonoBehaviour
 
     IEnumerator typeText(Dialog settings)
     {
-        GameAudioManager.Instance?.PlayDialog();
+      
         isCurrentlyPlaying = true; 
         textDisplay.text = "";
         yield return new WaitForSeconds(settings.initalDelay);
@@ -146,6 +140,7 @@ public  class DialogSystem : MonoBehaviour
         foreach (var c in settings.message)
         {
             textDisplay.text += c;
+            GameAudioManager.Instance?.PlayDialog(settings.speaker);
             yield return new WaitForSeconds(settings.timeBetweenCharacters);
         }
         GameAudioManager.Instance?.StopDialog();

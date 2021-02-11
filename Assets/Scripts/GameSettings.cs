@@ -36,7 +36,7 @@ public class GameSettings : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = 24;
+        // Application.targetFrameRate = 24;
         quitMenu = transform.GetChild(0)?.gameObject;
         isMenuActive = quitMenu.activeSelf;
         

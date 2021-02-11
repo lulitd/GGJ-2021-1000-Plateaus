@@ -12,27 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66cb072cb3fdc4479bf71aeb97179e5, type: 3}
   m_Name: S08.1
   m_EditorClassIdentifier: 
-  CharacterPortrait: {fileID: 0}
   lines:
   - message: 'Gertie is reunited with her parents '
     initalDelay: 0.2
     timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
+    speaker: {fileID: 11400000, guid: 2c5c9b58601f96945966d74261f04edb, type: 2}
   - message: And they all lived happily ever after
     initalDelay: 0.2
     timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
+    speaker: {fileID: 11400000, guid: 2c5c9b58601f96945966d74261f04edb, type: 2}
   - message: until... the Great Depression hits...
     initalDelay: 0.2
     timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
-  leftSide: 0
+    speaker: {fileID: 11400000, guid: 2c5c9b58601f96945966d74261f04edb, type: 2}

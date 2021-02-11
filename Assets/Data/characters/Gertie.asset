@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cc7d815504a76499ea0274d5c453ab, type: 3}
+  m_Name: Gertie
+  m_EditorClassIdentifier: 
+  defaultPortrait: {fileID: 0}
+  soundbits:
+  - {fileID: 8300000, guid: a24e4e2878bd1784c8a4c948cba536b2, type: 3}
+  - {fileID: 8300000, guid: 9065bdf4778717c41976421c1a2be0a4, type: 3}
+  - {fileID: 8300000, guid: 2baa697e13e3ede4a96e1dd2ffe8ac9d, type: 3}
+  - {fileID: 8300000, guid: 1b8cae8c95fc58649a38c798bb67d76f, type: 3}
+  - {fileID: 8300000, guid: 11165378a6fa7b5478e719824430f81a, type: 3}
+  - {fileID: 8300000, guid: 890ca111667710b4f8f562f817c94807, type: 3}
+  - {fileID: 8300000, guid: 7e2d6a75f86b1864e8f13edaf5e2c1fa, type: 3}
+  - {fileID: 8300000, guid: 903b6fa48ac8761498991d3baae26565, type: 3}
+  - {fileID: 8300000, guid: 1d6afc08c6036eb4d94e08656c7bd10c, type: 3}
+  - {fileID: 8300000, guid: 65d6e4f4fe982b14b8835ef83a61c9e1, type: 3}
+  - {fileID: 8300000, guid: aafbecb856329f64096674a7c4bf8dbf, type: 3}
+  - {fileID: 8300000, guid: 363d980923247b34a8801b9aa0417504, type: 3}

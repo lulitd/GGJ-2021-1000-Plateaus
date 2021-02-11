@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cc7d815504a76499ea0274d5c453ab, type: 3}
+  m_Name: Goat
+  m_EditorClassIdentifier: 
+  defaultPortrait: {fileID: 0}
+  soundbits:
+  - {fileID: 8300000, guid: 61e4af79a8adde74ea99fb9e0a67c301, type: 3}
+  - {fileID: 8300000, guid: 7db22d48a66769a4db81869314bef970, type: 3}
+  - {fileID: 8300000, guid: 9df2c0f0a71d6a1469797134882457cc, type: 3}
+  - {fileID: 8300000, guid: ebf706734b3f34148ad6bdb755319fcf, type: 3}
+  - {fileID: 8300000, guid: 6ca1d54006ace5940bc9f29a9d2dc273, type: 3}
+  - {fileID: 8300000, guid: 05e64121757f25748b6fdb33b69ea64c, type: 3}
+  - {fileID: 8300000, guid: 43d44bdc54409ef4294b1281f0ca4776, type: 3}
+  - {fileID: 8300000, guid: f89c5fa1dc6e8ee4993ee231ddca7ebe, type: 3}
+  - {fileID: 8300000, guid: f249eda17f0938d4aae2fff90eb06112, type: 3}

@@ -12,27 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66cb072cb3fdc4479bf71aeb97179e5, type: 3}
   m_Name: S02.1 - Goat
   m_EditorClassIdentifier: 
-  CharacterPortrait: {fileID: 0}
   lines:
   - message: He tells Gertie the truth about her origins.
     initalDelay: 0.2
     timeBetweenCharacters: 0.05
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 1
+    speaker: {fileID: 11400000, guid: cff1963a8691c344aabe62f17ddd9db4, type: 2}
   - message: Her parents send her away at the start of the war to her aunt
     initalDelay: 0.2
     timeBetweenCharacters: 0.05
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 1
+    speaker: {fileID: 11400000, guid: cff1963a8691c344aabe62f17ddd9db4, type: 2}
   - message: 'Once payment stopped, her aunt sold her to the circus '
     initalDelay: 0.2
     timeBetweenCharacters: 0.05
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 1
-  leftSide: 0
+    speaker: {fileID: 11400000, guid: cff1963a8691c344aabe62f17ddd9db4, type: 2}

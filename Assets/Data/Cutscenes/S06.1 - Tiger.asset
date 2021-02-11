@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66cb072cb3fdc4479bf71aeb97179e5, type: 3}
   m_Name: S06.1 - Tiger
   m_EditorClassIdentifier: 
-  CharacterPortrait: {fileID: 0}
   lines:
   - message: 'The Ringmaster tells Gertie that she belongs to the circus forever
       and locks her up '
@@ -20,20 +19,16 @@ MonoBehaviour:
     timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
+    speaker: {fileID: 11400000, guid: f1fb90300061b824e8f7f8e2017111ad, type: 2}
   - message: He locks the clipping in a safe
     initalDelay: 0.2
     timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
+    speaker: {fileID: 11400000, guid: f1fb90300061b824e8f7f8e2017111ad, type: 2}
   - message: "He says he\u2019ll let her out after the last performance"
     initalDelay: 0.2
     timeBetweenCharacters: 0.04
     canFastforward: 1
     disappearAfterTime: -1
-    portrait: {fileID: 0}
-    portraitLeft: 0
-  leftSide: 0
+    speaker: {fileID: 11400000, guid: f1fb90300061b824e8f7f8e2017111ad, type: 2}

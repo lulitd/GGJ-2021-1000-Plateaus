@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameAudioManager : MonoBehaviour
 {
-    public  static GameAudioManager Instance = null; 
+    public  static GameAudioManager Instance; 
 
     public AudioSource loopSource;
     public AudioSource SfxSource;
@@ -14,9 +14,13 @@ public class GameAudioManager : MonoBehaviour
 
     public AudioClip MainMenu;
     public AudioClip MainSong;
-
-
-
+    
+    [Header("UI SOUNDS")]
+    public AudioClip ButtonClick;
+    private bool isUISfxOnCooldown = false;
+    public float uisfxCooldown;
+    private bool isDialogOnCooldown = false;
+  
     void SetupSingleton()
     {
         if (Instance != null)
@@ -44,13 +48,13 @@ public class GameAudioManager : MonoBehaviour
         if (_audioMixer != null)
         {
             SfxSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("SFX")[0];
-            dialog.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("SFX")[0];
+            dialog.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Dialog")[0];
             loopSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Music")[0];
         }
 
         loopSource.clip = MainMenu;
         loopSource.loop = true;
-        dialog.loop = true; 
+        dialog.loop = false; 
     }
 
     private void OnEnable()
@@ -63,41 +67,74 @@ public class GameAudioManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (scene.name.Contains("Menu"))
+        {
+            Instance.loopSource.clip = MainMenu;
+            Instance.loopSource.Play();
+        }
+        else if (Instance.loopSource.clip != MainSong) {
+                Instance.loopSource.clip = MainSong;
+                Instance.loopSource.Play();
+        }
+
+        setupUISFX();
+    }
+
+    private void setupUISFX()
     {
         
+        
+       //FIND ALL BUTTONS
+       var buttons = GameObject.FindObjectsOfType<Button>();
+       
+       for (var i = 0; i < buttons.Length; i++)
+       {
+           var b = buttons[i];
+           b.onClick.AddListener(PlayUISFX);
+       }
+       
+    
+    }
 
-        if (arg0.name.Contains("Menu"))
-        {
-            GameAudioManager.Instance.loopSource.clip = MainMenu;
-            GameAudioManager.Instance.loopSource.Play();
-        }
-        else
-        {
-              if (GameAudioManager.Instance.loopSource.clip != MainSong)
-            {
-                GameAudioManager.Instance.loopSource.clip = MainSong;
-                GameAudioManager.Instance.loopSource.Play();
-            }
-        }
+    public void PlayUISFX()
+    {
+        if (isUISfxOnCooldown) return; 
+            SfxSource.PlayOneShot(ButtonClick);
+            isUISfxOnCooldown = true;
+        Invoke(nameof(ResetUISoundCooldown),uisfxCooldown);
+    }
+
+    private void ResetUISoundCooldown()
+    {
+        isUISfxOnCooldown = false; 
+    }
+    
+    private void ResetUIDialogCooldown()
+    {
+        isDialogOnCooldown = false; 
     }
 
 
     public void PlayOneShotSFX(AudioClip sfx)
-    {
+    {  
         SfxSource.PlayOneShot(sfx);
     }
     
-    public void PlayDialog ()
-    {
-        // dialog.clip = gertieTalk; 
-        // dialog.Play();
-        // StartCoroutine(FadeMixerGroup.StartFade( _audioMixer, "SFX",  0.1F, 1));
+    public void PlayDialog (Character character)
+    {   
+        if (!character || isDialogOnCooldown) return;
+        //StartCoroutine(FadeMixerGroup.StartFade( _audioMixer, "Dialog",  0.01F, 1));
+        var clip = character.soundbits[Random.Range(0, character.soundbits.Length)];
+        dialog.PlayOneShot(clip);
+        isDialogOnCooldown = true;
+        Invoke(nameof(ResetUIDialogCooldown),clip.length*0.9f);
+    
     }
     public void StopDialog ()
     {
-        // dialog.clip = gertieTalk; 
-        // StartCoroutine(FadeMixerGroup.StartFade( _audioMixer, "SFX",  0.1F, 0));
+     //   StartCoroutine(FadeMixerGroup.StartFade( _audioMixer, "Dialog",  0.04F, 0));
     }
 }
 

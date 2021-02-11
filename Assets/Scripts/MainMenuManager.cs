@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
     public AudioMixer Mixer;
     private Animator MenuAnimator;
+    [SerializeField] private Slider volSlider;
+    [SerializeField] private Slider sfxSlider; 
     
     public string scenename ="tester";
     private void Start()
@@ -19,6 +22,16 @@ public class MainMenuManager : MonoBehaviour
        
        AdjustVolume(vol);
        AdjustSFX(sfx);
+
+       // ensures ui is insync...
+       if (volSlider)
+       {
+           volSlider.SetValueWithoutNotify(vol);
+       }
+       if (sfxSlider)
+       {
+           sfxSlider.SetValueWithoutNotify(sfx);
+       }
     }
 
     public void BeginGame()
@@ -43,7 +56,6 @@ public class MainMenuManager : MonoBehaviour
         
             while (asyncLoad.progress<0.9f)
         {
-            Debug.Log(asyncLoad.progress);
             yield return null;
         }
             yield return new WaitForSeconds(1.0f);
@@ -55,7 +67,7 @@ public class MainMenuManager : MonoBehaviour
         }
     
         public void UnloadMenu()
-        {    Debug.Log("bye");
+        {   
           
         }
 
