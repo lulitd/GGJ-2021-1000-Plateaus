@@ -27,7 +27,7 @@ public class Collectable : MonoBehaviour, IInteractable
         {
             _renderer.sprite = itemData.sprite;
             
-            //resetting the collider to fit correctly based on the sprite. 
+            //reset the collider to fit correctly based on the sprite. 
             DestroyImmediate(_collider2D);
             _collider2D = gameObject.AddComponent<BoxCollider2D>();
         }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Today's Paper
   m_EditorClassIdentifier: 
   itemName: 'Newspaper Clipping. '
-  itemDescription: '"First Paratroopers Land in the North". That gives me an idea.'
+  itemDescription: '"First Paratroopers Land in the North".  If I had a parachute
+    I could land safely from that window.'
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0

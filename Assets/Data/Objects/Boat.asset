@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boat
   m_EditorClassIdentifier: 
   itemName: Ship in bottle
-  itemDescription: Fancy... I wonder how they got it in there.
+  itemDescription: How do they get the ship in the there?
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0

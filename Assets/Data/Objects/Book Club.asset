@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d223e0aeb018124ea0240cc31430fa5, type: 3}
   m_Name: Book Club
   m_EditorClassIdentifier: 
-  itemName: 'Book: Bar-tender''s Guide'
-  itemDescription: '"Bar-tender''s Guide"'
+  itemName: Bar-tender's Guide
+  itemDescription: How to glug glug glug with style.
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0

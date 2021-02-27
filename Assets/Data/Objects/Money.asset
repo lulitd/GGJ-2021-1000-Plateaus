@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Money
   m_EditorClassIdentifier: 
   itemName: 
-  itemDescription: 'I wonder if he''d like to make a donation to the orphans and
-    widows fund. '
+  itemDescription: Would the Ringmaster like to make a donation to the orphans and
+    windows fund?
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Postcard
   m_EditorClassIdentifier: 
   itemName: Postcard
-  itemDescription: Must be from someone special
+  itemDescription: Most people would just sign it with XOXO.
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0

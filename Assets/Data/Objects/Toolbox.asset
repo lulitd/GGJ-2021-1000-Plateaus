@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Toolbox
   m_EditorClassIdentifier: 
   itemName: Toolbox
-  itemDescription: Every tool except a hammer...
+  itemDescription: Nothing useful inside.
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0

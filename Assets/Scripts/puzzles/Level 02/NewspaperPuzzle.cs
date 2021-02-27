@@ -48,7 +48,7 @@ public class NewspaperPuzzle : Puzzle
             PlayerInventory.Instance.RemoveItem(hankie);
             PlayerInventory.Instance.AddItem(parachute);
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
-                new Dialog("If I take this hanky and string... voila! A parachute"),true);
+                new Dialog("If I take this hankie and string... voila! A parachute"),true);
             isSolved = true; 
         }
        
@@ -56,63 +56,57 @@ public class NewspaperPuzzle : Puzzle
 
     public override void onClick()
     {
-        var hasrope = PlayerInventory.Instance.CheckInventory(rope);
-        var hashankie = PlayerInventory.Instance.CheckInventory(hankie);
+        var hasRope = PlayerInventory.Instance.CheckInventory(rope);
+        var hasHankie = PlayerInventory.Instance.CheckInventory(hankie);
         
-        if (!hashankie && !hasrope)
+        if (!hasHankie && !hasRope)
         {
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(isSolved?isSolvedLine:unSolvedLine),true);
             return; 
         }
-        else if (hashankie && !hasrope)
+        if (hasHankie && !hasRope)
         {
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(noRope),true);
             return; 
-        }else if(!hashankie && hasrope)
+        }
+        if(!hasHankie && hasRope)
         {
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(noHankie),true);
-        } else if (hashankie && hasrope)
+        } if (hasHankie && hasRope)
         {
-            PlayerInventory.Instance.RemoveItem(rope);
-            PlayerInventory.Instance.RemoveItem(hankie);
-            PlayerInventory.Instance.AddItem(parachute);
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
-                new Dialog("If I take this hanky and string... voila! A parachute"),true);
-            isSolved = true; 
+                new Dialog(noItem),true);
         }
     }
     
     public override void OnInspect()
     {
-        var hasrope = PlayerInventory.Instance.CheckInventory(rope);
-        var hashankie = PlayerInventory.Instance.CheckInventory(hankie);
+        var hasRope = PlayerInventory.Instance.CheckInventory(rope);
+        var hasHankie = PlayerInventory.Instance.CheckInventory(hankie);
 
-        if (!hashankie && !hasrope)
+        if (!hasHankie && !hasRope)
         {
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(isSolved?isSolvedLine:unSolvedLine),true);
             return; 
         }
-        else if (hashankie && !hasrope)
+        else if (hasHankie && !hasRope)
         {
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(noRope),true);
             return; 
-        }else if(!hashankie && hasrope)
+        }else if(!hasHankie && hasRope)
         {
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
                 new Dialog(noHankie),true);
-        } else if (hashankie && hasrope)
+        } else if (hasHankie && hasRope)
         {
-            PlayerInventory.Instance.RemoveItem(rope);
-            PlayerInventory.Instance.RemoveItem(hankie);
-            PlayerInventory.Instance.AddItem(parachute);
+          
             DialogSystem.Instance.PlayDialogImmediately.Invoke(
-                new Dialog("If I take this hanky and string... voila! A parachute"),true);
-            isSolved = true; 
+                new Dialog(noItem), true);
         }
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Book Morse
   m_EditorClassIdentifier: 
   itemName: '"Codes & Ciphers & Steganographs, Oh My!"'
-  itemDescription: '"Codes & Ciphers & Steganographs, Oh My!"'
+  itemDescription: The real enigma is why the Ringmaster even owns this book.
   sprite: {fileID: 0}
   uiSprite: {fileID: 0}
   isCollectible: 0
