@@ -10819,8 +10819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSolved: 0
-  unSolvedLine: '"First Paratroopers Land in the North".                                                                  
-    That gives me an idea...'
+  unSolvedLine: '"First Paratroopers Land in the North". That gives me an idea.... '
   onSolvedLine: 
   isSolvedLine: Should be able to get out with this
   attemptSolved: 
@@ -11196,7 +11195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b69fb0e4d9849e84392bfaf30ac100a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
